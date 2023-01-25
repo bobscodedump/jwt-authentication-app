@@ -1,0 +1,18 @@
+npm init to track packages
+
+cors to allow apps with different domains to interact with each other
+
+pg to allow interaction with database
+
+jsonwebtoken to generate and verify jsonwebtoken 
+
+bcrypt to encrypt password
+
+express to build server
+
+postgres commands: 
+\l to see all databases
+\c _database_ to enter database
+
+uuid in database generates random id for users
+to download: create extension if not exists "uuid-ossp";
