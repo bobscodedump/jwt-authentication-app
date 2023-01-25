@@ -16,3 +16,9 @@ postgres commands:
 
 uuid in database generates random id for users
 to download: create extension if not exists "uuid-ossp";
+
+res.json() to display in postman
+
+500 status code -> generic error code
+401 status code -> person is unauthenticated
+403 status code -> person is unauthorised
