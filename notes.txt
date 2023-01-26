@@ -22,3 +22,6 @@ res.json() to display in postman
 500 status code -> generic error code
 401 status code -> person is unauthenticated
 403 status code -> person is unauthorised
+
+state is reset everytime React app is refreshed, need a function to check authorization to let user keep using the site
+

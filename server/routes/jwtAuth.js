@@ -3,9 +3,13 @@ const pool = require("../db")
 const bcrypt = require("bcrypt")
 const jwtGenerator = require("../utils/jwtGenerator");
 
+//middleware
+const validInfo = require("../middleware/validInfo");
+const authorisation = require("../middleware/authorisation");
+
 //registering
 
-router.post("/register", async(req, res) => {
+router.post("/register", validInfo, async(req, res) => {
     try {
         
         // destructure req.body (name, email, password)
@@ -48,7 +52,7 @@ router.post("/register", async(req, res) => {
 
 //logging in
 
-router.post("/login", async(req, res) => {
+router.post("/login", validInfo, async(req, res) => {
     try {
         
         // destructure req.body
@@ -80,8 +84,19 @@ router.post("/login", async(req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
-        
     }
 })
+
+router.get("/is-verified", authorisation, async(req, res) => {
+    try {
+        console.log("hi");
+        res.json(true);
+
+    } catch (err) {
+        
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
 
 module.exports = router;
