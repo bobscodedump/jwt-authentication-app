@@ -28,3 +28,5 @@ state is reset everytime React app is refreshed, need a function to check author
 Router is used to switch between different routes/urls
 
 render props vs component props: render prop is used to prevent remounting when props are passed
+
+use onChange to allow form inputs to be changed
