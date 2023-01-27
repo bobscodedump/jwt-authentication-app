@@ -25,3 +25,6 @@ res.json() to display in postman
 
 state is reset everytime React app is refreshed, need a function to check authorization to let user keep using the site
 
+Router is used to switch between different routes/urls
+
+render props vs component props: render prop is used to prevent remounting when props are passed
