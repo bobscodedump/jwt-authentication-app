@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -13,11 +14,27 @@ const Register = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  const onSubmitForm = (e) => {
+  const onSubmitForm = async (e) => {
     //prevent refresh
     e.preventDefault();
     try {
-      const response = await;
+      const body = { email, password, name };
+
+      // passing data to Restful API
+      const response = await fetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      // parsing data to json (parseResponse is jwtWebToken)
+      const parseResponse = await response.json();
+
+      // console.log(parseResponse);
+
+      localStorage.setItem("token", parseResponse.token);
+
+      setAuth(true);
     } catch (err) {
       console.error(err.message);
     }
@@ -53,6 +70,7 @@ const Register = () => {
         />
         <button className="btn btn-success btn-block">Submit</button>
       </form>
+      <Link to="/login">Login</Link>
     </Fragment>
   );
 };
